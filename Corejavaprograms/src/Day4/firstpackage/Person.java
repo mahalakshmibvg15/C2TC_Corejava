@@ -38,5 +38,4 @@ public class Person {
 		this.personName = personName;
 		this.personAge = personAge;
 		this.personCity = personCity;
-
 }
