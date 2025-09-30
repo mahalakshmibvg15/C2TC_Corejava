@@ -10,6 +10,7 @@ public class Continue {
 		continue;
 		// Even numbers are printed
 		System.out.print(k + " ");
+		}
 
 	}
 

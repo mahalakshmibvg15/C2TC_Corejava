@@ -11,6 +11,7 @@ public class NestedForLoopDemo {
 				System.out.println(i + "*" + j + "= " + i * j);
 			}
 			System.out.println();
+		}
 
 	}
 

@@ -53,6 +53,7 @@ public class Customer {
 		public String toString() {
 			return "Customer [customerName=" + customerName + ", customerId=" + customerId + ", customerCity="
 					+ customerCity + "]";
+		}
 
 	}
 

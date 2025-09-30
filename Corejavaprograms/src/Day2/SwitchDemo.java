@@ -24,6 +24,7 @@ public class SwitchDemo {
 		default:
 			System.out.println(x+" is other than letter, digit, space or special symbol ");
 			break;
+		}
 
 	}
 
