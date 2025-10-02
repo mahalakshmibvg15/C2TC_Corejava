@@ -6,7 +6,6 @@ public class Customer {
 		private String customerName;
 		 private int customerId;
 		 private String customerCity;
-		 
 		// Default Constructor
 		public Customer() {
 			System.out.println("Default Constructor");
@@ -53,7 +52,7 @@ public class Customer {
 		public String toString() {
 			return "Customer [customerName=" + customerName + ", customerId=" + customerId + ", customerCity="
 					+ customerCity + "]";
-		}
+		
 
 	}
 
