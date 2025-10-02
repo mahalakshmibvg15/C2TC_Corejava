@@ -32,5 +32,6 @@ public class Base {
 	{
 		System.out.println("Protected access Base class");
 		System.out.println("Protected Variable : "+varProtected);
+	}
 
 }
