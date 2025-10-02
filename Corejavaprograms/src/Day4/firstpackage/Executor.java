@@ -27,7 +27,7 @@ public class Executor {
 		/*
 		 * Person p=new Person(); System.out.println(p instanceof Base); //CTE
 		 * Incompatible types
-
-	}
+		 */	}
 
 }
+
