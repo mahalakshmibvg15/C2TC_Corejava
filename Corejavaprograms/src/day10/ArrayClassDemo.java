@@ -6,9 +6,9 @@ public class ArrayClassDemo {
 		int intArr[] = { 10, 20, 15, 22, 35, 18 , 14 };
 
 		// To print the elements in one line
-		System.out.println("Array is : "+Arrays.toString(intArr));
+		System.out.println("Array is : "+Array.toString(intArr));
 		
-		Arrays.sort(intArr);
+		Array.sort(intArr);
 		
 		System.out.println("-----------------After Sorting---------------");
 		System.out.println("Array is : "+Arrays.toString(intArr));
