@@ -1,4 +1,4 @@
-package Day19.v1;
+package Day19;
 	class MyCubeImpl implements MyCube
 	{
 		@Override

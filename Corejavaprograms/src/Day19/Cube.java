@@ -1,4 +1,4 @@
-package Day19.v1;
+package Day19;
 
 	interface Cube {
 		int calculate(int a); // only one abstract method

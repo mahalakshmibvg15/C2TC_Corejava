@@ -1,4 +1,4 @@
-package Day19.v1;
+package Day19;
 	import java.util.function.BiFunction;
 	import java.util.function.Consumer;
 	import java.util.function.Function;
