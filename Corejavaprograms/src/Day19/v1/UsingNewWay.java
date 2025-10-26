@@ -3,13 +3,11 @@ package Day19.v1;
 public class UsingNewWay {
 
 	public static void main(String[] args) {
-MyCube obj=(no) -> no*no*no;
 		
 		/*
 		 * MyCube obj=(no) -> { return no*no*no; };
 		 */
 		
-		System.out.println("Cube is "+obj.getCube(3));
 		
 		Operations opr;
 		
