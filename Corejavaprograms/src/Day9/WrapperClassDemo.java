@@ -1,21 +1,16 @@
 package Day9;
-
 public class WrapperClassDemo {
+    public static void main(String[] args) {
+        // Instead of new Integer(1), use valueOf()
+        Integer i = Integer.valueOf(1);
+        System.out.println(i);
 
-	public static void main(String[] args) {
-	    Integer i = new Integer(10);
-		System.out.println(i);
-		int b = i.intValue();
-		System.out.println(b);
+        // Convert to int using intValue()
+        int b = i.intValue();
+        System.out.println(b);
 
-		// Without using intValue()
-		int c = i;
-		System.out.println(c);
-		
-		int a = 100;
-		Integer i1 = a;
-		System.out.println(i1);
-
-	}
-
+        // Without using intValue() (auto-unboxing)
+        int c = i; // auto-unboxing
+        System.out.println(c);
+    }
 }
