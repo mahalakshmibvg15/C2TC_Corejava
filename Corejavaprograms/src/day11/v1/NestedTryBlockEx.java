@@ -1,29 +1,34 @@
 package day11.v1;
-
 public class NestedTryBlockEx {
-	public static void main(String[]args) {
-		int z = 0;
-		z = x / y;
-		System.out.println("Result of division is z: " + z);
-		return z;
-	}
+    public static void main(String[] args) {
+        int x, y, z;
 
-	public static void main(String[] args) {
-		int x, y,z;
-		try {
-			x = Integer.parseInt(args[0]); // command line args
-			y = Integer.parseInt(args[1]);
-			try {
-				z=divide(x, y);
-			} catch (ArithmeticException ae) {
-				System.err.println("Error! A number cannot be divided by 0");
-			}
-		} catch (NumberFormatException e) {
-			System.err.println("Error! Invalid input, number must be an integer.");
-		} catch (ArrayIndexOutOfBoundsException e) {
-			System.err.println("Error! please pass numbers ");
-		}
-		System.out.println("I am out of outer catch block");
-	}
+        System.out.println("----- Nested Try Block Example -----");
 
+        try {
+            // Outer try block
+            try {
+                x = Integer.parseInt(args[0]); // read from command line
+                y = Integer.parseInt(args[1]);
+
+                try {
+                    // Inner try block
+                    z = x / y;
+                    System.out.println("Division result (z) = " + z);
+                } catch (ArithmeticException e) {
+                    System.out.println("❌ Error: Division by zero is not allowed!");
+                }
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("❌ Error: Please provide two command line arguments!");
+            } catch (NumberFormatException e) {
+                System.out.println("❌ Error: Please enter valid integer numbers!");
+            }
+
+        } catch (Exception e) {
+            System.out.println("❌ Some other error occurred: " + e.getMessage());
+        }
+
+        System.out.println("Program ended successfully!");
+    }
 }
