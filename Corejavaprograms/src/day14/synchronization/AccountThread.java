@@ -1,32 +1,28 @@
 package day14.synchronization;
 
 public class AccountThread {
-	public class AccountThread extends Thread{
-		private Account acc;
-		private int amt;
-		
-		public AccountThread(Account acc,int amt)
-		{
-			this.acc=acc;
-			this.amt=amt;
-			start();
-			
-		}
-		@Override
-		public void run()
-		{
-			/* Using Synchronized Block - withdraw() is non synchronized
-			 * synchronized (acc) 
-			 * { 
-			 * acc.withdraw(amt); 
-			 * }
-			 */		
-			
-			try {
-				acc.withdraw(amt);
-			} catch (InsufficientBalanceException e) {
-				System.err.println(e.getMessage());
-			}
-		}
+    private int balance = 1000;
 
+    // synchronized method for withdrawal
+    public synchronized void withdraw(int amount) {
+        System.out.println(Thread.currentThread().getName() + " is trying to withdraw " + amount);
+
+        if (balance >= amount) {
+            System.out.println(Thread.currentThread().getName() + " is processing...");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+
+            balance -= amount;
+            System.out.println(Thread.currentThread().getName() + " completed withdrawal. Remaining balance: " + balance);
+        } else {
+            System.out.println(Thread.currentThread().getName() + " — Insufficient balance!");
+        }
+    }
+
+    public int getBalance() {
+        return balance;
+    }
 }

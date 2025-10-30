@@ -1,78 +1,27 @@
-package day14.synchronization;
+ package day14.synchronization;
+ public class Account {
+     private int balance = 1000;
 
-public class Account {
-	private int accNo;
-	private String name;
-	private double balance;
+     // synchronized method for withdrawal
+     public synchronized void withdraw(int amount) {
+         System.out.println(Thread.currentThread().getName() + " is trying to withdraw " + amount);
 
-	public int getAccNo() {
-		return accNo;
-	}
+         if (balance >= amount) {
+             System.out.println(Thread.currentThread().getName() + " is processing...");
+             try {
+                 Thread.sleep(1000);
+             } catch (InterruptedException e) {
+                 System.out.println(e);
+             }
 
-	public void setAccNo(int accNo) {
-		this.accNo = accNo;
-	}
+             balance -= amount;
+             System.out.println(Thread.currentThread().getName() + " completed withdrawal. Remaining balance: " + balance);
+         } else {
+             System.out.println(Thread.currentThread().getName() + " — Insufficient balance!");
+         }
+     }
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-
-	@Override
-	public String toString() {
-		return "Account [accNo=" + accNo + ", Name=" + name + ", balance=" + balance + "]";
-	}
-
-	public Account() {
-		super();
-
-	}
-
-	public Account(int accNo, String name, double balance) {
-		this.accNo = accNo;
-		this.name = name;
-		this.balance = balance;
-	}
-
-	@Override
-	public synchronized void deposit(int amt) throws DepositLimitExceedsException {
-		if (amt > 25000)
-			throw new DepositLimitExceedsException("Daily limit exceeds...");
-		else {
-			balance += amt;
-			System.out.println("Amount Deposited...." + amt);
-		}
-
-	}
-
-	/* Non-synchronized method
-	 * 
-	 * @Override public void withdraw(int amt) { balance=balance-amt;
-	 * System.out.println("Balance : "+balance); }
-	 */
-
-	// Synchronized method
-
-	@Override
-	public synchronized void withdraw(int amt) throws InsufficientBalanceException {
-
-		if (balance - amt < MINBAL)
-			throw new InsufficientBalanceException();
-		else {
-			balance = balance - amt;
-			System.out.println("after withdrwing Rs." + amt + " current Balance : Rs." + balance);
-		}
-	}
-
-}
+     public int getBalance() {
+         return balance;
+     }
+ }
