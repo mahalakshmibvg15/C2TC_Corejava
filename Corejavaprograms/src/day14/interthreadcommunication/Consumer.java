@@ -1,22 +1,16 @@
 package day14.interthreadcommunication;
+//Q is the shared resource class
+public class Consumer extends Thread {
+ Q obj;
 
-public class Consumer {
-	public class Consumer extends Thread {
+ public Consumer(Q obj) {
+     this.obj = obj;
+     start();  // start the thread automatically
+ }
 
-		Q obj; 
-
-		public Consumer(Q obj) {
-			this.obj = obj;
-			start();
-		}
-
-		public void run() {
-				while (true) {
-				try {
-					Thread.sleep(3000);
-				} catch (Exception e) {
-					System.out.println(e);
-				}
-				obj.get();
-			}
-		}
+ public void run() {
+     while (true) {
+         obj.get(); // method to consume from the shared object
+     }
+ }
+}

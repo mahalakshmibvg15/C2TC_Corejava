@@ -1,18 +1,23 @@
 package day13;
+public class ThreadLifeCycleDemo extends Thread {
+    int n;
+    String msg;
 
-public class ThreadLifeCycleDemo {
+    // ✅ Constructor with int and String parameters
+    public ThreadLifeCycleDemo(int n, String msg) {
+        this.n = n;
+        this.msg = msg;
+    }
 
-	public static void main(String[] args) {
-		ChildThread threadOne = new ChildThread(5, "First");
-		ChildThread threadTwo = new ChildThread(10, "Second");
-
-		threadOne.start();
-		//threadOne.start(); // throws IllegalStateException
-		// threadOne.run(); // single threaded application 
-		threadTwo.start();
-
-		System.out.println("-----------------------End of Main--------------------------");
-
-	}
-
+    @Override
+    public void run() {
+        try {
+            for (int i = 1; i <= n; i++) {
+                System.out.println(msg + " thread count: " + i);
+                Thread.sleep(500); // wait 0.5 second
+            }
+        } catch (InterruptedException e) {
+            System.out.println(msg + " thread interrupted!");
+        }
+    }
 }

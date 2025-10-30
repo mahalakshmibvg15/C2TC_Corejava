@@ -1,20 +1,32 @@
 package day14.interthreadcommunication;
+public class InterThreadCommunicationDemo{
+    int num;
+    boolean valueSet = false;
 
-public class InterThreadCommunicationDemo {
+    synchronized void put(int num) {
+        while (valueSet) {
+            try {
+                wait();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        System.out.println("Put: " + num);
+        this.num = num;
+        valueSet = true;
+        notify();
+    }
 
-	public static void main(String[] args) {
-	Q obj=new Q();
-		
-		Producer p1=new Producer(obj); //Producer thread
-		Consumer c1=new Consumer(obj); //Consumer thread
-					
-		try {
-			p1.join();
-			c1.join();
-		} catch (InterruptedException e) {
-			System.out.println(e);
-		}
-
-	}
-
+    synchronized void get() {
+        while (!valueSet) {
+            try {
+                wait();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        System.out.println("Got: " + num);
+        valueSet = false;
+        notify();
+    }
 }

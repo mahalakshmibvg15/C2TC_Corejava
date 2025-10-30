@@ -1,26 +1,21 @@
 package day14.interthreadcommunication;
+	public class Producer extends Thread {  // ✅ extend Thread
+	    Q obj;
 
-public class Producer {
-	public class Producer extends Thread {
-		Q obj;
+	    public Producer(Q obj) {  // ✅ constructor to receive shared object
+	        this.obj = obj;
+	        start(); // ✅ start the thread
+	    }
 
-		public Producer(Q obj) {
-
-			this.obj = obj;
-			start();
-		}
-
-		public void run() {
-			int i = 0;
-			while (true) {
-				try {
-					Thread.sleep(3000);
-				} catch (Exception e) {
-					System.out.println(e);
-				}
-				obj.put(i);
-				i++;
-			}
-		}
-
-}
+	    public void run() {
+	        int i = 0;
+	        while (true) {
+	            obj.put(i++);
+	            try {
+	                Thread.sleep(500); // small delay
+	            } catch (Exception e) {
+	                System.out.println(e);
+	            }
+	        }
+	    }
+	}
