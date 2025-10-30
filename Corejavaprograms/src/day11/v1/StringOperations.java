@@ -3,27 +3,34 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class StringOperations {
+    public static void main(String[] args) {
+        // ✅ Using try-with-resources automatically closes Scanner
+        try (Scanner sc = new Scanner(System.in)) {
 
-	public static void main(String[] args) {
-	try {	
-		Scanner sc = new Scanner(System.in);
-		int startIndex, endIndex;
-		String message,str;
-		System.out.println("Enter the message: ");
-		message=sc.nextLine();
-		System.out.println("Enter the start index and end index: ");
-		startIndex=sc.nextInt();
-		endIndex=sc.nextInt();
-		str=message.substring(startIndex, endIndex);
-		System.out.println("The extracted message is: "+ str);
-	
-	}catch(StringIndexOutOfBoundsException ae) {
-		System.err.println("Error! Invalid index ");
-	
-	}catch(InputMismatchException ae) {
-		System.err.println("Error! Invalid input ");
-	}
-		
-	}
+            int startIndex, endIndex;
+            String message, str;
 
+            System.out.print("Enter the message: ");
+            message = sc.nextLine();
+
+            System.out.print("Enter the start index and end index: ");
+            startIndex = sc.nextInt();
+            endIndex = sc.nextInt();
+
+            try {
+                // Extract substring safely
+                str = message.substring(startIndex, endIndex);
+                System.out.println("Substring: " + str);
+            } catch (StringIndexOutOfBoundsException e) {
+                System.out.println("❌ Error: Invalid index range! " + e.getMessage());
+            }
+
+        } catch (InputMismatchException e) {
+            System.out.println("❌ Error: Please enter valid integer indexes!");
+        } catch (Exception e) {
+            System.out.println("❌ Unexpected error: " + e.getMessage());
+        }
+
+        System.out.println("Program ended successfully!");
+    }
 }

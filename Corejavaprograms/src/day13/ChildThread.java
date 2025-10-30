@@ -1,25 +1,13 @@
 package day13;
-
-public class ChildThread {
-	private int n;
-	private String msg;
-
-	// Constructor
-	public ChildThread(int n, String msg) {
-		this.n = n;
-		this.msg = msg;
-	}
-
-	@Override
-	public void run() {
-		for (int i = 1; i <= n; i++) {
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				System.err.println("Thread interrupted: " + e.getMessage());
-			}
-			System.out.println(msg + i + " " + Thread.currentThread().getName());
-		}
-	}
-
+public class ChildThread extends Thread {
+    @Override
+    public void run() {
+        String msg = "Hello from ChildThread";
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            System.err.println("Thread interrupted: " + e.getMessage());
+        }
+        System.out.println(msg + " - " + Thread.currentThread().getName());
+    }
 }
