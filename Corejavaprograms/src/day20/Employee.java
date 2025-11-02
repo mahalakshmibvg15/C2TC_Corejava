@@ -1,4 +1,4 @@
-package day20.V1;
+package day20;
 
 public class Employee {
 	private int empId;
