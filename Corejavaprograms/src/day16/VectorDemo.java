@@ -1,4 +1,4 @@
-package day16.queue;
+package day16;
 
 public class VectorDemo {
 
