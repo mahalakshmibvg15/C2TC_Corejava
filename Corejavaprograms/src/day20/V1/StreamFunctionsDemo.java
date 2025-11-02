@@ -42,5 +42,5 @@ package day20.V1;
 			StreamFunctions.showStatistics(numbers.stream());
 
 		}
-
+	
 }
